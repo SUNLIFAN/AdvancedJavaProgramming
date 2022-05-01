@@ -1,0 +1,52 @@
+@startuml timeline
+entity Line as Line
+actor Gourds as Gourds
+actor Geezer as Geezer
+entity sorter as sorter
+entity log as log 
+entity writer as writer
+entity file as file
+note over Line
+Line initialization
+end note
+note over Gourds
+form a line
+end note
+Gourds -> Line
+note over Geezer
+Geezer initialization
+end note 
+note over sorter
+sorter initialization
+end note
+sorter -> Geezer
+note over Geezer
+get sorter
+end note
+note over Geezer
+use sorter to sort the line
+end note
+Geezer -> sorter
+note over sorter
+be called to sort the line
+end note
+sorter -> Line
+note over Line
+be sorted
+end note
+note over writer
+writer initialization
+end note
+note over Geezer
+output log to writer
+end note
+Geezer -> writer
+note over writer
+write log to file
+end note
+writer -> file
+note over writer
+writer flush
+writer close
+end note
+@enduml

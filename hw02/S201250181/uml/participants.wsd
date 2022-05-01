@@ -1,0 +1,35 @@
+@startuml participants
+class Scene
+enum Gourd
+interface Linable
+class Line
+interface Sorter
+class Geezer
+class BubbleSorter
+class Position
+Geezer ..> Line
+Line ..> Linable
+Sorter <|.. BubbleSorter
+Linable <|.. Gourd
+Geezer : + void setSorter(Sorter sorter)
+Linable : + void setPosition(Position p)
+Linable : + Position getPosition()
+Linable : + int getValue()
+Sorter : + void load(int[] elements)
+Sorter : + void sort()
+Sorter : + String getPlan()
+Geezer o-- Sorter
+Geezer : + void getTheGeezer()
+Geezer : + String lineUp(Line line)
+Position : + void setLinable(Linable linable)
+Line : + void put(Linable linable, int i)
+Line : + Linable get(int i)
+Line : + Linable[] toArray()
+Geezer : - Sorter sorter
+Gourd o-- Position
+Linable --o Position
+Gourd : + Gourd getGourdByRank(int rank)
+Gourd : + int rank()
+Gourd : + void swapPosition(Gourd another)
+Scene ..> Geezer
+@enduml

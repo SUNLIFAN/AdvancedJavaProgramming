@@ -1,0 +1,53 @@
+@startuml participants2
+class Color 
+interface Sorter 
+class InsertionSorter
+class QuickSorter
+interface Linable
+class Matrix 
+class Monster
+class RandomGenerator
+class Scene 
+class Snake 
+class Position 
+Matrix : - int row 
+Matrix : - int col 
+Snake ..> Sorter
+Matrix ..> Linable
+Linable <|.. Monster
+Sorter <|.. QuickSorter
+Sorter <|.. InsertionSorter
+Monster o-- Position
+Position o-- Linable
+Snake ..> Matrix
+Monster ..> Color
+RandomGenerator ..> Color
+Scene ..> RandomGenerator
+Scene ..> Snake
+Monster : + {static}Monster getMonsterByRank(int rank)
+Monster : + int rank(){return rank;}
+Monster : + void swapPosition(Monster another)
+Linable : + void setPosition(Position position);
+Linable : + Position getPosition();
+Linable : + int getValue();
+Monster : - Position position
+Matrix : + void put(Linable linable, int rowNum,int colNum)
+Matrix : + Linable get(int rowNum,int colNum)
+Position : + void setLinable(Linable linable)
+Matrix : + Linable[] toArray()
+Sorter : + void load(int[] elements)
+Sorter : + void sort()
+Sorter : + String getPlan()
+Snake : - Sorter Sorter
+Snake : + {static} Snake getTheSnake()
+Snake : + void setSorter(Sorter sorter)
+Snake : + String startArranging(Matrix matrix)
+Color : - int r 
+Color : - int g 
+Color : - int b 
+Color : + int getR()
+Color : + int getG()
+Color : + int getB()
+RandomGenerator : + Color[] generateColor(int num)
+
+@enduml
